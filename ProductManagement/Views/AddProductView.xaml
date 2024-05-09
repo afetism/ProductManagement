@@ -1,0 +1,72 @@
+﻿<Page x:Class="ProductManagement.Views.AddProductView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProductManagement.Views"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddProductView">
+ 
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30">Name</TextBlock>
+                <TextBox Grid.Column="1" Text="{Binding Product.Name}"></TextBox>
+                <TextBlock Grid.Row="1"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30">Price</TextBlock>
+                <TextBox  Grid.Row="1" Grid.Column="1" Text="{Binding Product.Price}"></TextBox>
+                <TextBlock Grid.Row="2"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30">Quantity</TextBlock>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Product.Quantity}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                  materialDesign:ButtonAssist.CornerRadius="25"
+                  ToolTip="All Products"
+                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                  Width="200" Height="50"
+                  Command="{Binding SaveCommand}">
+                    <TextBlock Text="Add Product"  FontSize="20"/>
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    materialDesign:ButtonAssist.CornerRadius="25"
+                    ToolTip="Load Excel"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Width="200" Height="50"
+                    Command="{Binding LoadCommand}" Grid.Column="1">
+                    <TextBlock Text="Load Excel"  FontSize="20" />
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    materialDesign:ButtonAssist.CornerRadius="25"
+                    ToolTip="Load Excel"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Width="200" Height="50"
+                    Command="{Binding CancelCommand}" Grid.Column="2">
+                    <TextBlock Text="Cancel"  FontSize="20" />
+                </Button>
+            </Grid>
+    </Grid>
+    
+</Page>
