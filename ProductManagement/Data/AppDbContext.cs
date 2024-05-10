@@ -10,7 +10,8 @@ namespace ProductManagement.Data
 {
     public class AppDbContext
     {
-        public ObservableCollection<Product> Products { get; set; } = new() { new Product(), new Product() };
+        public ObservableCollection<Product> Products { get; set; } = new() { new Product(){Name="Ciyelek",Price=2.5,Quantity=10}
+                                                                             , new Product(){Name="Gilas",Price=4,Quantity=10 } };
 
         public void AddProduct(Product product) => Products.Add(product);
 

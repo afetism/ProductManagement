@@ -25,6 +25,7 @@ public partial class App : Application
         Container.RegisterSingleton<AddProductViewModel>();
         Container.RegisterSingleton<AllProductsViewModel>();
         Container.RegisterSingleton<MainViewModel>();
+        Container.RegisterSingleton<EditProductViewModel>();
     }
 
     private void AddViews()
@@ -32,6 +33,7 @@ public partial class App : Application
         Container.RegisterSingleton<AddProductView>();
         Container.RegisterSingleton<AllProductsView>();
         Container.RegisterSingleton<MainView>();
+        Container.RegisterSingleton<EditProductView>();
     }
     protected override void OnStartup(StartupEventArgs e)
     {

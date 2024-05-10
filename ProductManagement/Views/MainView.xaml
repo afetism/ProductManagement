@@ -50,6 +50,6 @@
             </Button>
         </Grid>
 
-        <Frame Content="{Binding CurrentView}" Grid.Row="1"></Frame>
+        <Frame Content="{Binding CurrentView}" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

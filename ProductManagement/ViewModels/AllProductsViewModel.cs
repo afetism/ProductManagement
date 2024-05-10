@@ -1,5 +1,7 @@
 ﻿using ProductManagement.Command;
 using ProductManagement.Data;
+using ProductManagement.Models;
+using ProductManagement.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +24,17 @@ namespace ProductManagement.ViewModels
 
         }
 
-        private void EditProduct(object? obj)
+        private void EditProduct(object? id)
         {
-
+            var MainView = App.Current.MainWindow.DataContext as MainViewModel;
+            if (MainView != null)
+            {
+                MainView.CurrentView = App.Container.GetInstance<EditProductView>();
+                MainView.CurrentView.DataContext = App.Container.GetInstance<EditProductViewModel>();
+                var EditViewModel = MainView.CurrentView.DataContext as EditProductViewModel;
+                EditViewModel.ProductForEdit = DbContext.Products.FirstOrDefault(s => s.Id == id);
+                EditViewModel.CopyProductForEdit = EditViewModel.ProductForEdit?.Clone() as Product;
+            }
         }
 
         private void DeleteProduct(object? id)

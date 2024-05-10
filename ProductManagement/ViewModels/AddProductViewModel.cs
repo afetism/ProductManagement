@@ -4,6 +4,7 @@ using ProductManagement.Command;
 using ProductManagement.Data;
 using ProductManagement.Helpers;
 using ProductManagement.Models;
+using ProductManagement.Views;
 using System.ComponentModel;
 using System.IO;
 using System.Windows;
@@ -62,17 +63,39 @@ public class AddProductViewModel: NotifyPropertyChanged
                         DbContext.Products.Add(newProduct);
                     }
                 }
+                var mainViewModel = App.Current.MainWindow.DataContext as MainViewModel;
+                if (mainViewModel != null)
+                {
+                    mainViewModel.CurrentView = App.Container.GetInstance<AllProductsView>();
+                    mainViewModel.CurrentView.DataContext = App.Container.GetInstance<AllProductsViewModel>();
+
+                }
             }
         }
     }
     private void Cansel(object? obj)
     {
-        throw new NotImplementedException();
+
+        Product = new();
+        var mainViewModel = App.Current.MainWindow.DataContext as MainViewModel;
+        if (mainViewModel != null)
+        {
+            mainViewModel.CurrentView = App.Container.GetInstance<AllProductsView>();
+            mainViewModel.CurrentView.DataContext = App.Container.GetInstance<AllProductsViewModel>();
+
+        }
     }
 
     private void Save(object? obj)
     {
         DbContext.AddProduct(Product);
         Product = new();
+        var mainViewModel = App.Current.MainWindow.DataContext as MainViewModel;
+        if (mainViewModel != null)
+        {
+            mainViewModel.CurrentView = App.Container.GetInstance<AllProductsView>();
+            mainViewModel.CurrentView.DataContext = App.Container.GetInstance<AllProductsViewModel>();
+
+        }
     }
 }
